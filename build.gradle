@@ -1,0 +1,39 @@
+apply plugin: 'java'
+
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ['src']
+		}	
+	}
+}
+
+
+dependencies {
+	compile fileTree(dir:'../libs/', excludes:['minecraft/**'])
+	compile files('../DynamicMappings/mcremapped.jar')
+	compile rootProject.project(':MeddleAPI')
+}
+
+
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xlint:-options"
+    }
+}
+
+
+sourceCompatibility = '1.7'
+targetCompatibility = '1.7'
+
+
+jar {
+    baseName = 'doubledoors'
+    version = '1.0'
+	
+    manifest {
+		attributes('MeddleAPI-Mods' : 'net.fybertech.doubledoors.DoubleDoorsMod')
+		attributes('TweakClass' : 'net.fybertech.doubledoors.DoubleDoorsTweak')
+	}   
+}
