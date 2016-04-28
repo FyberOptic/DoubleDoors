@@ -87,7 +87,7 @@ public class DoubleDoorsTransformer implements IClassTransformer
 		String playSFX = DynamicMappings.getMethodMapping("net/minecraft/world/World playAuxSFXAtEntity (Lnet/minecraft/entity/player/EntityPlayer;ILnet/minecraft/util/BlockPos;I)V");
 		if (playSFX == null) return handleError("Couldn't locate playAuxSFXAtEntity!", bytes);
 		
-		MethodNode onNeighbor = DynamicMappings.getMethodNodeFromMapping(cn, "net/minecraft/block/Block onNeighborBlockChange (Lnet/minecraft/world/World;Lnet/minecraft/util/BlockPos;Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/block/Block;)V");
+		MethodNode onNeighbor = DynamicMappings.getMethodNodeFromMapping(cn, "net/minecraft/block/Block onNeighborBlockChange (Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/BlockPos;Lnet/minecraft/block/Block;)V");
 		if (onNeighbor == null) return handleError("Couldn't locate onNeighborBlockChange!", bytes);
 		
 		targetNode = null;
@@ -119,9 +119,9 @@ public class DoubleDoorsTransformer implements IClassTransformer
 		list.clear();
 		list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // BlockDoor
 		list.add(new VarInsnNode(Opcodes.ILOAD, powerVar));
-		list.add(new VarInsnNode(Opcodes.ALOAD, 1)); // World
-		list.add(new VarInsnNode(Opcodes.ALOAD, 2)); // BlockPos
-		list.add(new VarInsnNode(Opcodes.ALOAD, 3)); // IBlockState
+		list.add(new VarInsnNode(Opcodes.ALOAD, 1)); // IBlockState
+		list.add(new VarInsnNode(Opcodes.ALOAD, 2)); // World
+		list.add(new VarInsnNode(Opcodes.ALOAD, 3)); // BlockPos		
 		list.add(new VarInsnNode(Opcodes.ALOAD, 4)); // Block
 		list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "net/fybertech/doubledoors/DoubleDoorsMod", "onNeighborBlockChangeHook", desc, false));
 		

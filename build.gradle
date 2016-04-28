@@ -1,39 +1,46 @@
-apply plugin: 'java'
+apply from: 'meddle.gradle'
 
+sourceCompatibility = '1.7'
+targetCompatibility = '1.7'
 
 sourceSets {
 	main {
 		java {
 			srcDirs = ['src']
-		}	
+		}
 	}
 }
 
 
-dependencies {
-	compile fileTree(dir:'../libs/', excludes:['minecraft/**'])
-	compile files('../DynamicMappings/mcremapped.jar')
-	compile rootProject.project(':MeddleAPI')
+greddle {
+    cacheDir = 'cache'
 }
 
-
-gradle.projectsEvaluated {
-    tasks.withType(JavaCompile) {
-        options.compilerArgs << "-Xlint:-options"
-    }
+meddle {
+    version = "1.2.2"
 }
 
+dynamicmappings {
+    version = "024"
+    //location = '../dynamicmappings/build/libs/dynamicmappings-024-beta.jar'
+}
 
-sourceCompatibility = '1.7'
-targetCompatibility = '1.7'
+meddleapi {
+    version = "1.0.5"
+    //location = '../meddleapi/build/libs/meddleapi-1.0.5.jar'
+}
 
+minecraft {
+    version = '1.9.3-pre2'
+}
 
 jar {
     baseName = 'doubledoors'
-    version = '1.0'
+    version = '1.0.2'
 	
     manifest {
 		attributes('MeddleAPI-Mods' : 'net.fybertech.doubledoors.DoubleDoorsMod')
 		attributes('TweakClass' : 'net.fybertech.doubledoors.DoubleDoorsTweak')
-	}   
+	}
 }
+

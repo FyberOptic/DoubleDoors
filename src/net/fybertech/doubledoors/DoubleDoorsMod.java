@@ -39,12 +39,13 @@ public class DoubleDoorsMod {
         	newState = newState.cycleProperty(BlockDoor.OPEN);
         	world.setBlockState(newPos, newState, 2);
             world.markBlockRangeForRenderUpdate(newPos, newPos);
-            world.playAuxSFXAtEntity(player, ((Boolean)newState.getValue(BlockDoor.OPEN)).booleanValue() ? 1003 : 1006, newPos, 0);
+            //world.playAuxSFXAtEntity(player, ((Boolean)newState.getValue(BlockDoor.OPEN)).booleanValue() ? 1003 : 1006, newPos, 0);
+            world.playAuxSFXAtEntity(player, ((Boolean)newState.getValue(BlockDoor.OPEN)).booleanValue() ? 1005 : 1011, newPos, 0);
         }
 	}
 	
 	
-	public static void onNeighborBlockChangeHook(BlockDoor door, boolean powered, World world, BlockPos pos, IBlockState state, Block block)
+	public static void onNeighborBlockChangeHook(BlockDoor door, boolean powered, IBlockState state, World world, BlockPos pos, Block block)
 	{
 		for (EnumFacing facing : EnumFacing.values()) {
 			if (facing == EnumFacing.DOWN || facing == EnumFacing.UP) continue;
@@ -58,7 +59,8 @@ public class DoubleDoorsMod {
         	
         	world.setBlockState(newPos, state.withProperty(BlockDoor.OPEN, Boolean.valueOf(powered)), 2);
             world.markBlockRangeForRenderUpdate(newPos, newPos);
-            world.playAuxSFXAtEntity((EntityPlayer)null, powered ? 1003 : 1006, newPos, 0);
+            //world.playAuxSFXAtEntity((EntityPlayer)null, powered ? 1003 : 1006, newPos, 0);
+            world.playAuxSFXAtEntity((EntityPlayer)null, powered ? 1005 : 1011, newPos, 0);
         }
 	}
 	
