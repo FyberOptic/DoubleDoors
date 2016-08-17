@@ -41,7 +41,7 @@ public class DoubleDoorsTransformer implements IClassTransformer
 		ClassNode cn = new ClassNode();
 		reader.accept(cn, 0);
 	
-		MethodNode onActivated = DynamicMappings.getMethodNodeFromMapping(cn, "net/minecraft/block/Block onBlockActivated (Lnet/minecraft/world/World;Lnet/minecraft/util/BlockPos;Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/entity/player/EntityPlayer;Lnet/minecraft/util/MainOrOffHand;Lnet/minecraft/item/ItemStack;Lnet/minecraft/util/EnumFacing;FFF)Z");
+		MethodNode onActivated = DynamicMappings.getMethodNodeFromMapping(cn, "net/minecraft/block/Block onBlockActivated (Lnet/minecraft/world/World;Lnet/minecraft/util/BlockPos;Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/entity/player/EntityPlayer;Lnet/minecraft/util/MainOrOffHand;Lnet/minecraft/util/EnumFacing;FFF)Z");
 		if (onActivated == null) return handleError("Couldn't locate onBlockActivated!", bytes);
 		
 		boolean foundReturn = false;
@@ -72,12 +72,11 @@ public class DoubleDoorsTransformer implements IClassTransformer
 		list.add(new VarInsnNode(Opcodes.ALOAD, 2)); // BlockPos
 		list.add(new VarInsnNode(Opcodes.ALOAD, 3)); // IBlockState
 		list.add(new VarInsnNode(Opcodes.ALOAD, 4)); // EntityPlayer
-		list.add(new VarInsnNode(Opcodes.ALOAD, 5)); // MainOrOffHand
-		list.add(new VarInsnNode(Opcodes.ALOAD, 6)); // ItemStack
-		list.add(new VarInsnNode(Opcodes.ALOAD, 7)); // EnumFacing
+		list.add(new VarInsnNode(Opcodes.ALOAD, 5)); // MainOrOffHand		
+		list.add(new VarInsnNode(Opcodes.ALOAD, 6)); // EnumFacing
+		list.add(new VarInsnNode(Opcodes.FLOAD, 7)); // float
 		list.add(new VarInsnNode(Opcodes.FLOAD, 8)); // float
 		list.add(new VarInsnNode(Opcodes.FLOAD, 9)); // float
-		list.add(new VarInsnNode(Opcodes.FLOAD, 10)); // float
 		list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "net/fybertech/doubledoors/DoubleDoorsMod", "onBlockActivatedHook", desc, false));
 		
 		onActivated.instructions.insertBefore(targetNode,  list);

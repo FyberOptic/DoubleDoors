@@ -17,7 +17,7 @@ public class DoubleDoorsMod {
 	}
 	
 	
-	public static void onBlockActivatedHook(BlockDoor door, World world, BlockPos pos, IBlockState state, EntityPlayer player, MainOrOffHand hand, ItemStack stack, EnumFacing side, float hitX, float hitY, float hitZ)
+	public static void onBlockActivatedHook(BlockDoor door, World world, BlockPos pos, IBlockState state, EntityPlayer player, MainOrOffHand hand, EnumFacing side, float hitX, float hitY, float hitZ)
 	{
 		if (player.isSneaking()) return;
 		
