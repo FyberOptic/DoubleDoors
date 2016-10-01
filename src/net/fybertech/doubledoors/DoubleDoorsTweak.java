@@ -7,7 +7,7 @@ import net.fybertech.meddle.MeddleMod;
 import net.minecraft.launchwrapper.ITweaker;
 import net.minecraft.launchwrapper.LaunchClassLoader;
 
-@MeddleMod(depends={"dynamicmappings", "meddleapi"}, id = "doubledoors", author="FyberOptic", name="DoubleDoors", version="1.0.3")
+@MeddleMod(depends={"dynamicmappings", "meddleapi"}, id = "doubledoors", author="FyberOptic", name="DoubleDoors", version="1.0.4")
 public class DoubleDoorsTweak implements ITweaker {
 
 	@Override

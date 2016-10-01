@@ -4,7 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MainOrOffHand;
@@ -45,7 +44,7 @@ public class DoubleDoorsMod {
 	}
 	
 	
-	public static void onNeighborBlockChangeHook(BlockDoor door, boolean powered, IBlockState state, World world, BlockPos pos, Block block)
+	public static void onNeighborBlockChangeHook(BlockDoor door, boolean powered, IBlockState state, World world, BlockPos pos, Block block, BlockPos pos2)
 	{
 		for (EnumFacing facing : EnumFacing.values()) {
 			if (facing == EnumFacing.DOWN || facing == EnumFacing.UP) continue;

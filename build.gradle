@@ -21,22 +21,22 @@ meddle {
 }
 
 dynamicmappings {
-    version = "026"
+    version = "028"
     //location = '../dynamicmappings/build/libs/dynamicmappings-024-beta.jar'
 }
 
 meddleapi {
-    version = "1.0.6"
+    version = "1.0.7"
     //location = '../meddleapi/build/libs/meddleapi-1.0.5.jar'
 }
 
 minecraft {
-    version = '16w32b'
+    version = '16w39c'
 }
 
 jar {
     baseName = 'doubledoors'
-    version = '1.0.3'
+    version = '1.0.4'
 	
     manifest {
 		attributes('MeddleAPI-Mods' : 'net.fybertech.doubledoors.DoubleDoorsMod')
